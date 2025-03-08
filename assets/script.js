@@ -17,7 +17,7 @@ let remainingFunds = 0;
 let investments = [0, 0, 0];
 let userName = "";
 
-// 투자 시작 (사용자 정보 입력)
+// 🛠️ 투자 시작 (UI 업데이트 + 사용자 정보 저장)
 function startInvestment() {
     userName = document.getElementById("userName").value;
     totalFunds = parseInt(document.getElementById("totalFunds").value);
@@ -30,32 +30,43 @@ function startInvestment() {
     remainingFunds = totalFunds;
     document.getElementById("remainingFunds").innerText = remainingFunds;
 
-    // UI 업데이트
-    document.getElementById("userInfo").style.display = "none";
-    document.getElementById("funds").style.display = "block";
-    document.getElementById("projects").style.display = "block";
-    document.getElementById("finalizeBtn").style.display = "block";
+    // ✅ UI 업데이트 (스타트업 투자 섹션 표시)
+    document.getElementById("userInfo").style.display = "none"; // 사용자 정보 입력 숨기기
+    document.getElementById("funds").style.display = "block"; // 남은 투자 금액 표시
+    document.getElementById("projects").style.display = "block"; // 🚀 투자 가능한 창업 아이디어 표시!
+    document.getElementById("finalizeBtn").style.display = "block"; // 최종 결과 버튼 표시
 }
+✅ 이제 투자 시작 버튼을 누르면 "투자 가능한 창업 아이디어"가 정상적으로 표시될 것입니다! 🚀
 
-// 투자 실행
-function invest(index) {
-    let investAmount = parseInt(document.getElementById(`invest${index}`).value);
+✅ index.html 수정 확인
+📌 스타트업 정보를 올바르게 표시하는지 확인 필요
+📜 (index.html)
 
-    if (isNaN(investAmount) || investAmount <= 0 || investAmount > remainingFunds) {
-        alert("올바른 투자 금액을 입력하세요!");
-        return;
-    }
-
-    // Firestore에 투자 내역 저장 (현재 시간 포함)
-    db.collection("investments").add({
-        name: userName,
-        amount: investAmount,
-        startup: ["ELECTRIC CAT", "TWINKLE", "평화를 잇다"][index],
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    });
-
-    remainingFunds -= investAmount;
-    document.getElementById("remainingFunds").innerText = remainingFunds;
-
-    alert(userName + "님이 " + investAmount + "코인을 투자하였습니다!");
-}
+html
+복사
+편집
+<!-- 투자 가능한 창업 아이디어 -->
+<h2>투자 가능한 창업 아이디어</h2>
+<div id="projects" style="display:none;"> <!-- 🚀 기본적으로 숨김 상태 -->
+    <div class="project">
+        <h3>1. 카피바라 대표님의 아이디어</h3>
+        <p>⚡ ELECTRIC CAT (친환경 전기생산 놀이터)</p>
+        <input type="number" id="invest0" placeholder="투자금 입력">
+        <button onclick="invest(0)">투자하기</button>
+        <span class="investment">투자금: <span id="invested0">0</span> 원</span>
+    </div>
+    <div class="project">
+        <h3>2. 주주 대표님의 아이디어</h3>
+        <p>💎 TWINKLE (동시 통역기)</p>
+        <input type="number" id="invest1" placeholder="투자금 입력">
+        <button onclick="invest(1)">투자하기</button>
+        <span class="investment">투자금: <span id="invested1">0</span> 원</span>
+    </div>
+    <div class="project">
+        <h3>3. 에드거 대표님의 아이디어</h3>
+        <p>🕊️ 평화를 잇다 (층간 소음 해결사)</p>
+        <input type="number" id="invest2" placeholder="투자금 입력">
+        <button onclick="invest(2)">투자하기</button>
+        <span class="investment">투자금: <span id="invested2">0</span> 원</span>
+    </div>
+</div>
