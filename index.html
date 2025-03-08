@@ -8,6 +8,49 @@
 </head>
 <body>
     <h1>어린이 창업가 모의투자</h1>
+    <p>각 대표님들께 초기 투자금 <strong>100,000원</strong>이 주어집니다.</p>
+
+    <div id="funds">남은 투자금: <span id="remainingFunds">100,000</span> 원</div>
+
+    <h2>투자 가능한 창업 아이디어</h2>
+    <div id="projects">
+        <div class="project">
+            <h3>1. 카피바라 대표님의 아이디어</h3>
+            <p>🌿 친환경 제품 판매 플랫폼</p>
+            <button onclick="invest(0)">투자하기</button>
+            <span class="investment">투자금: <span id="invested0">0</span> 원</span>
+        </div>
+        <div class="project">
+            <h3>2. 주주 대표님의 아이디어</h3>
+            <p>📚 어린이 맞춤 교육 서비스</p>
+            <button onclick="invest(1)">투자하기</button>
+            <span class="investment">투자금: <span id="invested1">0</span> 원</span>
+        </div>
+        <div class="project">
+            <h3>3. 에드거 대표님의 아이디어</h3>
+            <p>🎨 AI 기반 디자인 생성 앱</p>
+            <button onclick="invest(2)">투자하기</button>
+            <span class="investment">투자금: <span id="invested2">0</span> 원</span>
+        </div>
+        <div class="project">
+            <h3>4. 쿼카핑 대표님의 아이디어</h3>
+            <p>🍽️ 건강한 간편식 서비스</p>
+            <button onclick="invest(3)">투자하기</button>
+            <span class="investment">투자금: <span id="invested3">0</span> 원</span>
+        </div>
+        <div class="project">
+            <h3>5. YJ 대표님의 아이디어</h3>
+            <p>🛍️ 3D 프린팅 개인 맞춤 상품</p>
+            <button onclick="invest(4)">투자하기</button>
+            <span class="investment">투자금: <span id="invested4">0</span> 원</span>
+        </div>
+    </div>
+
+    <button id="finalizeBtn" onclick="finalizeInvestment()">최종 결과 발표</button>
+
+    <h2>📢 최종 투자 결과</h2>
+    <p id="winner"></p>
+
     <script src="script.js"></script>
 </body>
 </html>
