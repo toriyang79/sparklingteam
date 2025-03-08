@@ -3,7 +3,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyDlr9ZdKykypIPt4l5uK1h4PPgw_6yrds4",
     authDomain: "sparklingteam-7cd01.firebaseapp.com",
     projectId: "sparklingteam-7cd01",
-    storageBucket: "sparklingteam-7cd01.firebasestorage.app",
+    storageBucket: "sparklingteam-7cd01.appspot.com",
     messagingSenderId: "710268007308",
     appId: "1:710268007308:web:01cab459e67797856d9ca9"
 };
