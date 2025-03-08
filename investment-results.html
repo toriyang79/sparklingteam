@@ -9,22 +9,37 @@
     <h1>최종 투자 결과</h1>
     <ul id="investmentList"></ul>
 
+    <!-- ✅ Firebase SDK 추가 (Firestore 기능을 사용하려면 필요함) -->
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
     <script>
-        firebase.initializeApp(YOUR_FIREBASE_CONFIG);
-        const db = firebase.firestore();
-        
-        db.collection("investments").orderBy("timestamp", "desc").onSnapshot(snapshot => {
-            const investmentList = document.getElementById("investmentList");
-            investmentList.innerHTML = "";
-            snapshot.forEach(doc => {
-                let data = doc.data();
-                let listItem = document.createElement("li");
-                listItem.innerText = `${data.name}님이 ${data.startup}에 ${data.amount}원을 투자했습니다.`;
-                investmentList.appendChild(listItem);
-            });
+    // 🔥 Firebase 설정 (Firebase 콘솔에서 복사한 정보 입력)
+    const firebaseConfig = {
+        apiKey: "AIzaSyDlr9ZdKykypIPt4l5uK1h4PPgw_6yrds4",
+        authDomain: "sparklingteam-7cd01.firebaseapp.com",
+        projectId: "sparklingteam-7cd01",
+        storageBucket: "sparklingteam-7cd01.appspot.com",
+        messagingSenderId: "710268007308",
+        appId: "1:710268007308:web:01cab459e67797856d9ca9"
+    };
+
+    // ✅ Firebase 초기화
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // ✅ Firestore에서 투자 내역 불러오기 (최신순 정렬)
+    db.collection("investments").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+        const investmentList = document.getElementById("investmentList");
+        investmentList.innerHTML = "";
+        snapshot.forEach(doc => {
+            let data = doc.data();
+            let listItem = document.createElement("li");
+            let timestamp = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleString() : "시간 정보 없음";
+            listItem.innerText = `${data.name}님이 ${data.startup}에 ${data.amount}원을 투자했습니다. (📅 ${timestamp})`;
+            investmentList.appendChild(listItem);
         });
+    });
     </script>
 </body>
 </html>
