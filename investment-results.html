@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최종 투자 결과</title>
+</head>
+<body>
+    <h1>최종 투자 결과</h1>
+    <ul id="investmentList"></ul>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script>
+        firebase.initializeApp(YOUR_FIREBASE_CONFIG);
+        const db = firebase.firestore();
+        
+        db.collection("investments").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+            const investmentList = document.getElementById("investmentList");
+            investmentList.innerHTML = "";
+            snapshot.forEach(doc => {
+                let data = doc.data();
+                let listItem = document.createElement("li");
+                listItem.innerText = `${data.name}님이 ${data.startup}에 ${data.amount}원을 투자했습니다.`;
+                investmentList.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>
