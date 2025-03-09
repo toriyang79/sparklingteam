@@ -8,70 +8,49 @@
 </head>
 <body>
     <h1>어린이 창업가 모의투자</h1>
+    <p>각 대표님들께 초기 투자금 <strong>100,000원</strong>이 주어집니다.</p>
 
-    <!-- 투자자 정보 입력 -->
-    <div id="userInfo">
-        <label>이름 입력:</label>
-        <input type="text" id="userName" placeholder="이름을 입력하세요">
+    <div id="funds">남은 투자금: <span id="remainingFunds">100,000</span> 원</div>
 
-        <label>총 투자 금액 입력:</label>
-        <input type="number" id="totalFunds" placeholder="투자 가능 금액 입력">
-
-        <button onclick="startInvestment()">투자 시작</button>
-    </div>
-
-    <!-- 남은 투자 금액 표시 -->
-    <div id="funds" style="display:none;">
-        <p><strong>남은 투자금:</strong> <span id="remainingFunds">0</span> 원</p>
-    </div>
-
-    <!-- 투자 가능한 창업 아이디어 -->
     <h2>투자 가능한 창업 아이디어</h2>
-    <div id="projects" style="display:none;">
+    <div id="projects">
         <div class="project">
             <h3>카피바라 대표님의 아이디어</h3>
             <p>친환경 전기생산 놀이터</br>⚡ELECTRIC CAT</p>
-            <input type="number" id="invest0" placeholder="투자금 입력">
             <button onclick="invest(0)">투자하기</button>
             <span class="investment">투자금: <span id="invested0">0</span> 원</span>
         </div>
         <div class="project">
             <h3>주주 대표님의 아이디어</h3>
             <p>언어의 장벽을 허물어주는 동시 통역기</br>💎 TWINGKLE</p>
-            <input type="number" id="invest1" placeholder="투자금 입력">
             <button onclick="invest(1)">투자하기</button>
             <span class="investment">투자금: <span id="invested1">0</span> 원</span>
         </div>
         <div class="project">
             <h3>에드거 대표님의 아이디어</h3>
             <p>층간 소음 문제 해결사 </br> 🕊️ 평화를 잇다</p>
-            <input type="number" id="invest2" placeholder="투자금 입력">
             <button onclick="invest(2)">투자하기</button>
             <span class="investment">투자금: <span id="invested2">0</span> 원</span>
         </div>
         <div class="project">
             <h3>피크민 대표님의 아이디어</h3>
             <p>유기견들을 주인 품으로! </br>🐶 유기견기다려 주인한테 가자</p>
-            <input type="number" id="invest3" placeholder="투자금 입력">
             <button onclick="invest(3)">투자하기</button>
             <span class="investment">투자금: <span id="invested3">0</span> 원</span>
         </div>
         <div class="project">
             <h3>YJ 대표님의 아이디어</h3>
             <p>말하는 쓰레기통 </br>🚮 세이빈</p>
-            <input type="number" id="invest4" placeholder="투자금 입력">
             <button onclick="invest(4)">투자하기</button>
             <span class="investment">투자금: <span id="invested4">0</span> 원</span>
         </div>
     </div>
 
-    <button id="finalizeBtn" onclick="finalizeInvestment()" style="display:none;">최종 결과 발표</button>
+    <button id="finalizeBtn" onclick="finalizeInvestment()">최종 결과 발표</button>
 
     <h2>📢 최종 투자 결과</h2>
     <p id="winner"></p>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="script.js"></script> <!-- script.js는 Firebase 초기화 후 실행 -->
+    <script src="script.js"></script>
 </body>
 </html>
